@@ -324,11 +324,12 @@ Execution flow:
 
 ```mermaid
 flowchart TD
-    A[Portainer] --> B[start-comfy.py]
-    B --> C[ComfyUI]
-    C --> D[Restart Node]
-    D --> E[ComfyUI exits]
-    E --> F[Supervisor restarts ComfyUI]
+    P[Portainer] -.->|manages| D[Docker]
+    D --> S[start-comfy.py]
+    S --> C[ComfyUI]
+    C --> R[Restart Node]
+    R --> X[ComfyUI exits]
+    X --> F[Supervisor restarts ComfyUI]
     F -.-> C
 ```
 
