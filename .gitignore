@@ -1,0 +1,10 @@
+# Reglas de agentes
+.clinerules
+
+# Ecosistema de desarrollo (scripts, backups, archive, mocks, logs, experiments, context)
+.dev
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
