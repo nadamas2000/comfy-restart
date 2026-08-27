@@ -200,6 +200,35 @@ No ComfyUI parameters need to be duplicated.
 
 ------------------------------------------------------------------------
 
+# Why there is no install.py
+
+This project intentionally does not include an automatic installer.
+
+The reason is that compatibility mode can modify the ComfyUI entry
+point:
+
+    main.py
+
+Automatically performing this operation would be too invasive.
+
+An automatic installer could:
+
+-   Rename the original ComfyUI files.
+-   Replace a core system file.
+-   Conflict with future ComfyUI updates.
+-   Break forks or custom installations.
+-   Modify the user's environment without explicit approval.
+
+For safety and transparency, installation is manual.
+
+The user must decide whether compatibility mode is required and perform
+the file changes manually.
+
+This project provides the restart mechanism but does not silently modify
+ComfyUI core files.
+
+------------------------------------------------------------------------
+
 # Compatibility mode for applications requiring main.py
 
 Some applications or containers have a fixed entry point and always
@@ -249,35 +278,6 @@ The external application still executes:
 but the supervisor launches:
 
     python comfyui_main.py
-
-------------------------------------------------------------------------
-
-# Why there is no install.py
-
-This project intentionally does not include an automatic installer.
-
-The reason is that compatibility mode can modify the ComfyUI entry
-point:
-
-    main.py
-
-Automatically performing this operation would be too invasive.
-
-An automatic installer could:
-
--   Rename the original ComfyUI files.
--   Replace a core system file.
--   Conflict with future ComfyUI updates.
--   Break forks or custom installations.
--   Modify the user's environment without explicit approval.
-
-For safety and transparency, installation is manual.
-
-The user must decide whether compatibility mode is required and perform
-the file changes manually.
-
-This project provides the restart mechanism but does not silently modify
-ComfyUI core files.
 
 ------------------------------------------------------------------------
 
