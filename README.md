@@ -357,6 +357,37 @@ Recommended values:
 
 ------------------------------------------------------------------------
 
+# Using the node without the supervisor
+
+The Restart ComfyUI node only terminates the ComfyUI Python process.
+
+Restarting it is the supervisor's responsibility.
+
+When the supervisor is not running, the same node can be used as a
+ComfyUI shutdown node:
+
+-   The workflow completes.
+-   The node waits the configured delay.
+-   The ComfyUI Python process exits.
+-   ComfyUI stays off until it is started manually.
+
+This is useful when you want to stop ComfyUI at the end of a workflow
+(for example before a server shutdown or a maintenance window) without
+keeping the supervisor process alive.
+
+The delay applies in both modes.
+
+```mermaid
+flowchart TD
+    A[ComfyUI Workflow] --> B[Restart ComfyUI Node]
+    B --> C[ComfyUI Python process exits]
+    C --> D{Supervisor running?}
+    D -- Yes --> E[ComfyUI starts again]
+    D -- No --> F[ComfyUI stays off]
+```
+
+------------------------------------------------------------------------
+
 # Limitations
 
 This project restarts the ComfyUI Python process.
